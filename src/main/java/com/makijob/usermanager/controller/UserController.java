@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class UserController {
 
@@ -32,7 +34,13 @@ public class UserController {
         userRepository.save(user);
     }
 
+    @GetMapping("/api/v1/user/more/{id}")
+    public Optional<User> moreInfo(@PathVariable Long id){
+        return userRepository.findById(id);
+    }
 
+
+   
 
 
 
